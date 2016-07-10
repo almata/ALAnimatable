@@ -67,7 +67,7 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
     view.animateSubviews(from: .Right, excluding: [buttons])
 
-![example](DocAssets/alanimatable-example-1.gif)
+<img src="DocAssets/alanimatable-example-1.gif" alt="Example 1" style="width: 320px; height: 590px;"/>
 
 ### Example 2
 
@@ -75,7 +75,7 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
     view.animateSubviews(from: .Left, destination: .Out, speed: .Slow, origin: .Far, excluding: [buttons])
 
-![example](DocAssets/alanimatable-example-2.gif)
+<img src="DocAssets/alanimatable-example-2.gif" alt="Example 2" style="width: 320px; height: 590px;"/>
 
 ### Example 3
 
@@ -83,7 +83,7 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
     view.animateSubviews(from: .Top, origin: .ReallyFar, excluding: [buttons])
 
-![example](DocAssets/alanimatable-example-3.gif)
+<img src="DocAssets/alanimatable-example-3.gif" alt="Example 3" style="width: 320px; height: 590px;"/>
 
 ### Example 4
 
@@ -91,7 +91,7 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
     view.animateSubviews(from: .Bottom, bouncing: false, excluding: [buttons])
 
-![example](DocAssets/alanimatable-example-4.gif)
+<img src="DocAssets/alanimatable-example-4.gif" alt="Example 4" style="width: 320px; height: 590px;"/>
 
 ## Some considerations to keep in mind:
 
