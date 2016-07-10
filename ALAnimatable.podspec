@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.description  = "ALAnimatable adds an Animatable protocol into your project that lets you animate all subviews in a view at once with just a single line of code, providing you have created your user interface using Auto Layout."
 
   s.homepage     = "https://github.com/almata/ALAnimatable"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.screenshots  = "https://raw.githubusercontent.com/almata/ALAnimatable/master/DocAssets/alanimatable-example-1.gif", "https://raw.githubusercontent.com/almata/ALAnimatable/master/DocAssets/alanimatable-example-2.gif", "https://raw.githubusercontent.com/almata/ALAnimatable/master/DocAssets/alanimatable-example-3.gif", "https://raw.githubusercontent.com/almata/ALAnimatable/master/DocAssets/alanimatable-example-4.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
