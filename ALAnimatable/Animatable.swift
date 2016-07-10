@@ -1,6 +1,6 @@
 //
 //  Animatable.swift
-//  TestAnimateLayout
+//  ALAnimatable
 //
 //  Created by Albert Mata Guerra on 09/07/16.
 //  Copyright © 2016 Albert Mata Guerra. All rights reserved.
