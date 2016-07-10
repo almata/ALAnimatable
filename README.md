@@ -35,6 +35,7 @@ The full signature for the `animateSubviews` method includes more options appart
     func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination, speed: AnimatableSpeed,
                               origin: AnimatableOrigin, bouncing: Bool, excluding: Set<UIView>) 
 
+* `direction: AnimatableDirection` can be `Right`, `Left`, `Top` or `Bottom` and sets where the subviews are going to animate from.
 * `destination: AnimatableDestination` can be `In` (default option) or `Out` and indicates whether all subviews are supposed to animate to enter into the view or to go away.
 * `speed: AnimatableSpeed` can be `Quick`, `Medium` (default option) or `Slow` and sets the duration for the animation.
 * `origin: AnimatableOrigin` can be `Close` (default option), `Far` or `ReallyFar` and indicates how far the views are placed at the beginning of the animation (or how far they will go if it's an `Out` animation). This impacts a bit, but not much, on the subviews movement.
