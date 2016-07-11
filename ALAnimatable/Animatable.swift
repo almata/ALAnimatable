@@ -26,7 +26,7 @@ extension Animatable where Self: UIView {
         
         let atts = attributes(direction)
         // Filtering not hidden views is not only useful per se but helps dealing with issues regarding UILayoutSupport.
-        let including = Set(self.subviews.filter({!$0.hidden})).subtract(excluding)
+        let including = Set(subviews.filter({!$0.hidden})).subtract(excluding)
         let damping: CGFloat = bouncing ? 0.5 : 1
         
         if destination == .In {
