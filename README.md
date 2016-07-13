@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/platform-iOS%208%2B-blue.svg?style=flat-square" alt="Platform: iOS 8+" />
     <img src="https://img.shields.io/badge/language-Swift%202-f48041.svg?style=flat-square" alt="Language: Swift 2" />
-    <img src="https://img.shields.io/badge/pod-0.1-green.svg?style=flat-square" alt="CocoaPods compatible" />
+    <img src="https://img.shields.io/badge/pod-0.2-green.svg?style=flat-square" alt="CocoaPods compatible" />
     <img src="http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square" alt="License: MIT" />
 </p>
 
@@ -32,8 +32,10 @@ Just drag the file `Animatable.swift` into your project. That is all you really 
 
 The full signature for the `animateSubviews` method includes more options appart from the mandatory `direction`:
 
-    func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination, speed: AnimatableSpeed,
-                              origin: AnimatableOrigin, bouncing: Bool, excluding: Set<UIView>) 
+    func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination,
+                              speed: AnimatableSpeed, origin: AnimatableOrigin,
+                              bouncing: Bool, excluding: Set<UIView>,
+                              uniform: AnimatableUniform)
 
 * `direction: AnimatableDirection` can be `Right`, `Left`, `Top` or `Bottom` and sets where the subviews are going to animate from.
 * `destination: AnimatableDestination` can be `In` (default option) or `Out` and indicates whether all subviews are supposed to animate to enter into the view or to go away.
@@ -41,6 +43,7 @@ The full signature for the `animateSubviews` method includes more options appart
 * `origin: AnimatableOrigin` can be `Close` (default option), `Far` or `ReallyFar` and indicates how far the views are placed at the beginning of the animation (or how far they will go if it's an `Out` animation). This impacts a bit, but not much, on the subviews movement.
 * `bouncing: Bool` can obviously be `true` (default option) or `false` and sets whether or not the subviews will bounce at the end of the animation.
 * `excluding: Set<UIView>` expects a set (so you can pass an array) with all your view's subviews that you **do not** want to be animated. Its default value is an empty set, so all subviews get animated.
+* `uniform: AnimatableUniform` can be `Slightly`, `Nearly` or `Totally` (default option) and allows subviews animating at different velocities.
 
 ### So, how does this work?
 
@@ -93,6 +96,14 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
     view.animateSubviews(from: .Bottom, bouncing: false, excluding: [buttons])
 
 <img src="DocAssets/alanimatable-example-4.gif" alt="Example 4" width="320" height="590"/>
+
+### Example 5
+
+To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the right and setting `uniform` so each of the subviews gets animated at a different velocity:
+
+	view.animateSubviews(from: .Right, excluding: [buttons], uniform: .Slightly)
+
+<img src="DocAssets/alanimatable-example-5.gif" alt="Example 5" width="320" height="590"/>
 
 ## Some considerations to keep in mind:
 

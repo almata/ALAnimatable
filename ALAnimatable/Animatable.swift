@@ -14,7 +14,8 @@ public protocol Animatable {
     
     func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination,
                               speed: AnimatableSpeed, origin: AnimatableOrigin,
-                              bouncing: Bool, excluding: Set<UIView>)
+                              bouncing: Bool, excluding: Set<UIView>,
+                              uniform: AnimatableUniform)
     
 }
 
@@ -22,7 +23,8 @@ extension Animatable where Self: UIView {
     
     public func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination = .In,
                                      speed: AnimatableSpeed = .Medium, origin: AnimatableOrigin = .Close,
-                                     bouncing: Bool = true, excluding: Set<UIView> = []) {
+                                     bouncing: Bool = true, excluding: Set<UIView> = [],
+                                     uniform: AnimatableUniform = .Totally) {
         
         let atts = attributes(direction)
         // Filtering not hidden views is not only useful per se but helps dealing with issues regarding UILayoutSupport.
@@ -41,18 +43,21 @@ extension Animatable where Self: UIView {
         }
         
         delay(0.01) {
-            UIView.animateWithDuration(speed.rawValue, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
-                self.constraints.forEach { constraint in
-                    guard let firstItem = constraint.firstItem as? UIView, secondItem = constraint.secondItem as? UIView else { return }
-                    if including.isDisjointWith([firstItem, secondItem]) { return }
-                    if !atts.isDisjointWith([constraint.firstAttribute, constraint.secondAttribute]) {
+            
+            self.constraints.forEach { constraint in
+                guard let firstItem = constraint.firstItem as? UIView, secondItem = constraint.secondItem as? UIView else { return }
+                if including.isDisjointWith([firstItem, secondItem]) { return }
+                if !atts.isDisjointWith([constraint.firstAttribute, constraint.secondAttribute]) {
+                    let duration = speed.rawValue * uniform.multiplier()
+                    UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
                         constraint.constant -= origin.rawValue * direction.screenSize() * self.sign(constraint, superview: self, direction: direction)
-                    }
+                        self.layoutIfNeeded()
+                    }, completion: nil)
                 }
-                self.layoutIfNeeded()
-                }, completion: nil)
+            }
+            
         }
-        
+    
     }
     
     private func attributes(direction: AnimatableDirection) -> Set<NSLayoutAttribute> {
@@ -78,7 +83,7 @@ extension Animatable where Self: UIView {
             ),
             dispatch_get_main_queue(), closure)
     }
-    
+
 }
 
 public enum AnimatableSpeed: NSTimeInterval {
@@ -112,6 +117,22 @@ public enum AnimatableDirection {
         case .Left, .Right: return UIScreen.mainScreen().bounds.width
         case .Top, .Bottom: return UIScreen.mainScreen().bounds.height
         }
+    }
+}
+
+public enum AnimatableUniform {
+    case Slightly, Nearly, Totally
+    
+    func multiplier() -> Double {
+        switch self {
+        case .Slightly: return random(0.6, 1.4)
+        case .Nearly: return random(0.85, 1.15)
+        case .Totally: return 1.0
+        }
+    }
+    
+    private func random(min: Double, _ max: Double) -> Double {
+        return Double(arc4random_uniform(UInt32(max * 1000) - UInt32(min * 1000))) / 1000 + min
     }
 }
 
