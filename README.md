@@ -113,8 +113,12 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
 ## Author
 
-Albert Mata
+Albert Mata ([@almata](https://twitter.com/almata) on Twitter). Please find some more information about me and my work at my website [albertmata.net](http://www.albertmata.net).
+
+## Hire me
+
+I'm currently based in Barcelona and taking projects (permanent or contractor) all over Europe as long as you are OK with total or partial remote work (say I can be onsite one or two weeks a month if you need it). For more information, please check my projects at [albertmata.net/apps](http://albertmata.net/apps) or contact me at **hello@albertmata.net**.
 
 ## License
 
-`ALAnimatable` uses the MIT license. Please file an issue if you have any questions or if you would like to share how you are using this tool.
+**ALAnimatable** uses the MIT license. Please file an issue if you have any questions or if you would like to share how you are using this tool.
