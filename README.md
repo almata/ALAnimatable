@@ -32,10 +32,12 @@ Just drag the file `Animatable.swift` into your project. That is all you really 
 
 The full signature for the `animateSubviews` method includes more options appart from the mandatory `direction`:
 
-    func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination,
-                              speed: AnimatableSpeed, origin: AnimatableOrigin,
-                              bouncing: Bool, excluding: Set<UIView>,
-                              uniform: AnimatableUniform)
+```swift
+func animateSubviews(from direction: AnimatableDirection, destination: AnimatableDestination,
+                          speed: AnimatableSpeed, origin: AnimatableOrigin,
+                          bouncing: Bool, excluding: Set<UIView>,
+                          uniform: AnimatableUniform)
+```
 
 * `direction: AnimatableDirection` can be `Right`, `Left`, `Top` or `Bottom` and sets where the subviews are going to animate from.
 * `destination: AnimatableDestination` can be `In` (default option) or `Out` and indicates whether all subviews are supposed to animate to enter into the view or to go away.
@@ -69,7 +71,9 @@ Yes, it does. And good luck cleaning all those warnings in Interface Builder if 
 
 To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the right:
 
-    view.animateSubviews(from: .Right, excluding: [buttons])
+```swift
+view.animateSubviews(from: .Right, excluding: [buttons])
+```
 
 <img src="DocAssets/alanimatable-example-1.gif" alt="Example 1" width="320" height="590"/>
 
@@ -77,7 +81,9 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
 To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the left and moving out of the screen slowly but going far:
 
-    view.animateSubviews(from: .Left, destination: .Out, speed: .Slow, origin: .Far, excluding: [buttons])
+```swift
+view.animateSubviews(from: .Left, destination: .Out, speed: .Slow, origin: .Far, excluding: [buttons])
+```
 
 <img src="DocAssets/alanimatable-example-2.gif" alt="Example 2" width="320" height="590"/>
 
@@ -85,7 +91,9 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
 To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the top and really far (so they will appear abruptly):
 
-    view.animateSubviews(from: .Top, origin: .ReallyFar, excluding: [buttons])
+```swift
+view.animateSubviews(from: .Top, origin: .ReallyFar, excluding: [buttons])
+```
 
 <img src="DocAssets/alanimatable-example-3.gif" alt="Example 3" width="320" height="590"/>
 
@@ -93,7 +101,9 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
 To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the bottom and without final bouncing:
 
-    view.animateSubviews(from: .Bottom, bouncing: false, excluding: [buttons])
+```swift
+view.animateSubviews(from: .Bottom, bouncing: false, excluding: [buttons])
+```
 
 <img src="DocAssets/alanimatable-example-4.gif" alt="Example 4" width="320" height="590"/>
 
@@ -101,7 +111,9 @@ To animate all subviews in main `UIViewController`'s `view` (except the buttons 
 
 To animate all subviews in main `UIViewController`'s `view` (except the buttons at the bottom) coming from the right and setting `uniform` so each of the subviews gets animated at a different velocity:
 
-	view.animateSubviews(from: .Right, excluding: [buttons], uniform: .Slightly)
+```swift
+view.animateSubviews(from: .Right, excluding: [buttons], uniform: .Slightly)
+```
 
 <img src="DocAssets/alanimatable-example-5.gif" alt="Example 5" width="320" height="590"/>
 
